@@ -30,7 +30,8 @@ trait AdminExtensionControllerTrait
 
         // Removes existing referer
         $baseMasterRequestUri = !$this->request->isXmlHttpRequest()
-            ? $this->get('request_stack')->getMasterRequest()->getUri()
+            #? $this->get('request_stack')->getMasterRequest()->getUri()
+            ? null
             : $this->request->headers->get('referer');
         \parse_str(\parse_url($baseMasterRequestUri, PHP_URL_QUERY), $queryParameters);
         unset($queryParameters['referer']);
@@ -78,7 +79,7 @@ trait AdminExtensionControllerTrait
         // Get item for edit/show or custom actions => security voters may apply
         $easyadmin = $this->request->attributes->get('easyadmin');
         $subject = $easyadmin['item'] ?? null;
-        $this->get(AdminAuthorizationChecker::class)->checksUserAccess($this->entity, $actionName, $subject);
+        #$this->get(AdminAuthorizationChecker::class)->checksUserAccess($this->entity, $actionName, $subject);
 
         return parent::isActionAllowed($actionName);
     }
