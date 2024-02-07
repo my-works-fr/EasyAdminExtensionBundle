@@ -129,7 +129,7 @@ class AdminUser implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function eraseCredentials()
+    public function eraseCredentials(): void
     {
     }
 }
