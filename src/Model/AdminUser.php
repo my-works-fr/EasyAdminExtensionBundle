@@ -77,7 +77,7 @@ class AdminUser implements UserInterface
      *
      * @return array
      */
-    public function getRoles()
+    public function getRoles(): array
     {
         $roles = ['ROLE_ADMIN'];
 
